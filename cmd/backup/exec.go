@@ -196,6 +196,7 @@ func (s *script) runLabeledCommands(label string) error {
 type lifecyclePhase string
 
 const (
+	lifecyclePhaseStop    lifecyclePhase = "stop"
 	lifecyclePhaseArchive lifecyclePhase = "archive"
 	lifecyclePhaseProcess lifecyclePhase = "process"
 	lifecyclePhaseCopy    lifecyclePhase = "copy"

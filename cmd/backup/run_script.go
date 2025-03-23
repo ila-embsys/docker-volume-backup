@@ -58,7 +58,7 @@ func runScript(c *Config) (err error) {
 
 	return func() (err error) {
 		scriptErr := func() error {
-			if err := s.withLabeledCommands(lifecyclePhaseArchive, func() (err error) {
+			if err := s.withLabeledCommands(lifecyclePhaseStop, func() (err error) {
 				restartContainersAndServices, err := s.stopContainersAndServices()
 				// The mechanism for restarting containers is not using hooks as it
 				// should happen as soon as possible (i.e. before uploading backups or
@@ -71,7 +71,7 @@ func runScript(c *Config) (err error) {
 				if err != nil {
 					return
 				}
-				err = s.createArchive()
+				err = s.withLabeledCommands(lifecyclePhaseArchive, s.createArchive)()
 				return
 			})(); err != nil {
 				return err
