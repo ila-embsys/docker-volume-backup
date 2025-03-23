@@ -26,7 +26,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ghcr.io/offen/docker-volume-backup
+            ghcr.io/ila-embsys/docker-volume-backup
           # define global behaviour for tags
           flavor: |
             latest=false
@@ -71,7 +71,7 @@ jobs:
           fi
           releases=""
           for tag in "${tags[@]}"; do
-            releases="${releases:+$releases,}ghcr.io/offen/docker-volume-backup:$tag"
+            releases="${releases:+$releases,}ghcr.io/ila-embsys/docker-volume-backup:$tag"
           done
           echo "releases=$releases" >> "$GITHUB_OUTPUT"
 
